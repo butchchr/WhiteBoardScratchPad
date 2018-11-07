@@ -61,23 +61,47 @@ namespace BigIntFactorial
         //    Console.ReadKey();
         //}
 
+        //static void Main(string[] args)
+        //{
+        //    //fibonacci calc
+        //    Console.WriteLine("enter the nth number you would like me to calculate in the fibonacci sequence");
+        //    var userNum = int.Parse(Console.ReadLine());
+
+        //    BigInteger a = 0;
+        //    BigInteger b = 1;
+        //    BigInteger c = 0;
+        //    Console.WriteLine(a);
+        //    Console.WriteLine(b);
+        //    for(int i = 0; i< userNum; i++)
+        //    {
+        //        c = a + b;
+        //        Console.WriteLine(c);
+        //        a = b;
+        //        b = c;
+        //    }
+        //    Console.ReadKey();
+        //}
+
         static void Main(string[] args)
         {
-            //fibonacci calc
-            Console.WriteLine("enter the nth number you would like me to calculate in the fibonacci sequence");
-            var userNum = int.Parse(Console.ReadLine());
-
-            BigInteger a = 0;
-            BigInteger b = 1;
-            BigInteger c = 0;
-            Console.WriteLine(a);
-            Console.WriteLine(b);
-            for(int i = 0; i< userNum; i++)
+            for(var i = 1; i <= 100; i++)
             {
-                c = a + b;
-                Console.WriteLine(c);
-                a = b;
-                b = c;
+                if(i%3 == 0 && i%5 == 0)
+                {
+                    Console.WriteLine("Fizz Buzz");
+                }
+                else if (i%3 == 0)
+                {
+                    Console.WriteLine("Fizz");
+                }
+                else if(i%5 == 0)
+                {
+                    Console.WriteLine("Buzz");
+                }
+                else
+                {
+                    Console.WriteLine(i);
+                }
             }
             Console.ReadKey();
         }
