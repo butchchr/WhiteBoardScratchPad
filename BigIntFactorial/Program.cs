@@ -106,34 +106,76 @@ namespace BigIntFactorial
         //    Console.ReadKey();
         //}
 
-        static void Main(string[] args)
-        {
-            //number flipper take two
-            Console.WriteLine("input number to reverse");
-            var flipped = int.Parse(new String(Console.ReadLine().Reverse().ToArray()));
-            Console.WriteLine(flipped);
-            Console.ReadKey();
+        //static void Main(string[] args)
+        //{
+        //    //number flipper take two
+        //    Console.WriteLine("input number to reverse");
+        //    var flipped = int.Parse(new String(Console.ReadLine().Reverse().ToArray()));
+        //    Console.WriteLine(flipped);
+        //    Console.ReadKey();
 
+        //}
+        //}
+        //}
+
+
+
+        //        static int getMoneySpent(int[] keyboards, int[] drives, int b)
+        //        {
+        //            int max = -1;
+
+        //            for (int i = 0; i < keyboards.Count(); i++)
+        //            {
+        //                for (int j = 0; j < drives.Count(); j++)
+        //                {
+        //                    if (keyboards[i] + drives[j] <= b && keyboards[i] + drives[j] > max)
+        //                        max = keyboards[i] + drives[j];
+        //                }
+        //            }
+        //            return max;
+        //        }
+        //    }
+        //}
+
+
+        static int ActivityNotifications(int[] expenditure, int d)
+        {
+            var dailyMedian = 0;
+            var trailingDaysToCheck = new int[d];
+            Array.Copy(expenditure, trailingDaysToCheck, d);
+            var trailingDaysInOrder = trailingDaysToCheck.OrderByDescending(num => num);
+            var theArrayToCheck = trailingDaysInOrder.ToArray();
+            var notifications = 0;
+            var middle1 = 0;
+            var middle2 = 0;
+            var daytoCheck = d + 1;
+
+            if (d % 2 == 0)
+            {
+                middle1 = theArrayToCheck[d / 2];
+                middle2 = theArrayToCheck[d / 2] - 1;
+                dailyMedian = (middle1 + middle2) / 2;
+            }
+            else
+            {
+                dailyMedian = theArrayToCheck[d / 2];
+            }
+
+            if (expenditure.Length < d)
+            {
+                return 0;
+            }
+
+            while (daytoCheck < expenditure.Length)
+            {
+                if (expenditure[daytoCheck] >= dailyMedian * 2)
+                {
+                    notifications++;
+                    daytoCheck++;
+                }
+            }
+            return notifications;
         }
     }
 }
-
-
-
-//        static int getMoneySpent(int[] keyboards, int[] drives, int b)
-//        {
-//            int max = -1;
-
-//            for (int i = 0; i < keyboards.Count(); i++)
-//            {
-//                for (int j = 0; j < drives.Count(); j++)
-//                {
-//                    if (keyboards[i] + drives[j] <= b && keyboards[i] + drives[j] > max)
-//                        max = keyboards[i] + drives[j];
-//                }
-//            }
-//            return max;
-//        }
-//    }
-//}
 
